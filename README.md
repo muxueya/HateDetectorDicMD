@@ -39,7 +39,7 @@ To run the script and detect toxic comments, use the following command:
 python script.py
 ```
 
-The script will read comments from the `comments.txt` file and compare them against the words in `toxic_words.txt`. Toxic comments will be flagged and saved in `toxic_comments.txt`.
+The script will read comments from the `comments.txt` file and compare them against the words in `toxic_words.txt`. Toxic comments will be flagged and saved in `comment_toxicity_results.csv`.
 
 ## Output
 
