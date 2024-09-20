@@ -1,4 +1,5 @@
 import re
+import csv
 
 # Function to detect toxicity
 def detect_toxicity(comment, toxic_words):
@@ -14,12 +15,22 @@ with open('comments.txt', 'r', encoding='utf-8', errors='ignore') as file:
 with open('toxic_words.txt', 'r', encoding='utf-8', errors='ignore') as file:
     toxic_words = [line.strip() for line in file.readlines()]
 
-# Detect toxic comments
-toxic_comments = [comment for comment in comments if detect_toxicity(comment, toxic_words)]
+# Prepare a list of results (comment, toxic/non-toxic)
+results = []
 
-# Save the toxic comments to a new text file
-with open('toxic_comments.txt', 'w', encoding='utf-8', errors='ignore') as file:
-    for comment in toxic_comments:
-        file.write(comment + '\n')
+# Detect toxic comments and label them
+for comment in comments:
+    if detect_toxicity(comment, toxic_words):
+        results.append({'comment': comment, 'label': 'toxic'})
+    else:
+        results.append({'comment': comment, 'label': 'non-toxic'})
 
-print(f"{len(toxic_comments)} toxic comments saved to 'toxic_comments.txt'")
+# Save the results to a CSV file
+with open('comment_toxicity_results.csv', 'w', newline='', encoding='utf-8') as csvfile:
+    fieldnames = ['comment', 'label']
+    writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+    writer.writeheader()
+    writer.writerows(results)
+
+print(f"Toxicity results saved to 'comment_toxicity_results.csv'")
