@@ -1,5 +1,6 @@
 import re
 import csv
+import pandas as pd
 
 # Function to detect toxicity
 def detect_toxicity(comment, toxic_words):
@@ -34,3 +35,21 @@ with open('comment_toxicity_results.csv', 'w', newline='', encoding='utf-8') as 
     writer.writerows(results)
 
 print(f"Toxicity results saved to 'comment_toxicity_results.csv'")
+
+# Load the CSV file
+df = pd.read_csv('comment_toxicity_results.csv') 
+
+# Calculate the total number of comments
+total_comments = len(df)
+
+# Calculate the number of toxic and non-toxic comments
+toxic_count = len(df[df['label'] == 'toxic'])
+non_toxic_count = len(df[df['label'] == 'non-toxic'])
+
+# Calculate the percentages
+toxic_percentage = (toxic_count / total_comments) * 100
+non_toxic_percentage = (non_toxic_count / total_comments) * 100
+
+# Print the results
+print(f"Percentage of toxic comments: {toxic_percentage:.2f}%")
+print(f"Percentage of non-toxic comments: {non_toxic_percentage:.2f}%")
