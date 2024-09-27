@@ -28,7 +28,7 @@ Download the compressed project as a .zip file and decompress it. Navigate to th
 
 3. **Prepare data files:**
 
-   - `comments.txt`: This file should contain one comment per line.
+   - `incels-5000.xlsx`: This file should contain one comment per line.
    - `toxic_words.txt`: A list of toxic words, each on a separate line.
 
 ## Running the Script
@@ -39,11 +39,19 @@ To run the script and detect toxic comments, use the following command:
 python script.py
 ```
 
-The script will read comments from the `comments.txt` file and compare them against the words in `toxic_words.txt`. Toxic comments will be flagged and saved in `comment_toxicity_results.csv`.
+## Input Files (Not Included in Repository) 
+The following input files are **not included**  in the repository and must be provided locally: 
+- **incels-5000.xlsx** : This file contains the list of comments. Each comment should be on a separate row under the 'comment' column.
+ 
+- **toxic_words.txt** : A list of toxic words, each on a separate line, used to detect harmful language.
 
-## Output
+Please ensure that these files are added to the appropriate directory before running the script.
 
-- **toxic_comments.txt**: This file will contain all the flagged toxic comments.
+## Output Files (Not Included in Repository) 
+ 
+- **comment_toxicity_results.csv** : This file contains the results of the toxicity analysis.
+
+These files are generated during the execution of the script and are excluded from the repository.
 
 ## Customization
 
