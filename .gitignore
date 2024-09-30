@@ -1,4 +1,4 @@
 # Ignore input and output data files
-incels-5000.xlsx
-comment_toxicity_results.csv
-toxic_words.txt
+*.xlsx
+*.csv
+*.txt
